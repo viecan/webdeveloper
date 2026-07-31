@@ -641,12 +641,12 @@
             <textarea id="message" name="message" placeholder="A few sentences about your business and what you're picturing for the site..."></textarea>
           </div>
           <button type="submit" class="submit-btn">Send my request →</button>
-          <div class="form-note">This opens your email app with the details filled in, ready to send to viet.adops@gmail.com</div>
+          <div class="form-note">Submissions are sent straight to viet.adops@gmail.com</div>
         </div>
         <div class="thanks" id="thanksBlock">
           <div class="stampcheck">✓</div>
           <h3>Order received!</h3>
-          <p>Your email app should be open with your details filled in. Hit send, and I'll reply within the hour.</p>
+          <p>Your request has been sent to Vince. I'll reply within the hour.</p>
         </div>
       </form>
     </div>
@@ -709,24 +709,49 @@
   }, { threshold: 0.4 });
   statEls.forEach(el => statIO.observe(el));
 
-  // lead form -> mailto
+  // lead form -> emails viet.adops@gmail.com directly via FormSubmit
   const form = document.getElementById('leadForm');
-  form.addEventListener('submit', function(e){
+  form.addEventListener('submit', async function(e){
     e.preventDefault();
+    const submitBtn = form.querySelector('.submit-btn');
     const name = document.getElementById('name').value.trim();
     const business = document.getElementById('business').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
 
-    const subject = encodeURIComponent(`New website inquiry: ${business}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nBusiness: ${business}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\n\nMessage:\n${message}`
-    );
-    window.location.href = `mailto:viet.adops@gmail.com?subject=${subject}&body=${body}`;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
 
-    document.getElementById('formFields').style.display = 'none';
-    document.getElementById('thanksBlock').classList.add('show');
+    const payload = {
+      name, business, email, phone: phone || 'N/A', message,
+      _subject: `New website inquiry: ${business}`,
+      _template: 'table',
+      _captcha: 'false'
+    };
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/viet.adops@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if(!res.ok) throw new Error('Send failed');
+      document.getElementById('formFields').style.display = 'none';
+      document.getElementById('thanksBlock').classList.add('show');
+    } catch(err){
+      // fallback so the inquiry is never lost, even if the email service is unreachable
+      const subject = encodeURIComponent(`New website inquiry: ${business}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nBusiness: ${business}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\n\nMessage:\n${message}`
+      );
+      window.location.href = `mailto:viet.adops@gmail.com?subject=${subject}&body=${body}`;
+      document.getElementById('formFields').style.display = 'none';
+      document.getElementById('thanksBlock').classList.add('show');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send my request →';
+    }
   });
 </script>
 
