@@ -10,14 +10,14 @@
 <style>
   :root{
     --paper:#FFFFFF;
-    --cream:#FBF5F2;
-    --ink:#241512;
-    --ink-soft:#5B4844;
-    --rose:#9C7C77;
-    --red:#C81E1E;
-    --red-bright:#FF4433;
-    --red-deep:#7E1414;
-    --line:#EFE1DD;
+    --cream:#F2FAF6;
+    --ink:#152420;
+    --ink-soft:#4C5E55;
+    --rose:#6E8A7C;
+    --red:#1B8F5A;
+    --red-bright:#22C55E;
+    --red-deep:#0B4F32;
+    --line:#DCEAE1;
     --shadow: 0 20px 50px -20px rgba(36,21,18,0.25);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -64,7 +64,7 @@
   }
   .brand .dot{
     width:10px; height:10px; border-radius:50%; background:var(--red);
-    box-shadow:0 0 0 4px rgba(200,30,30,0.15);
+    box-shadow:0 0 0 4px rgba(27,143,90,0.15);
   }
   .navlinks{display:flex; gap:34px; align-items:center;}
   .navlinks a{
@@ -101,7 +101,7 @@
     position:relative;
     padding:56px 0 90px;
     background:
-      radial-gradient(560px 320px at 88% -10%, rgba(200,30,30,0.10), transparent 70%),
+      radial-gradient(560px 320px at 88% -10%, rgba(27,143,90,0.10), transparent 70%),
       var(--cream);
     border-bottom:1px solid var(--line);
     overflow:hidden;
@@ -155,9 +155,9 @@
   }
   .btn-primary{
     background:var(--red); color:#fff;
-    box-shadow:0 12px 24px -8px rgba(200,30,30,0.55);
+    box-shadow:0 12px 24px -8px rgba(27,143,90,0.55);
   }
-  .btn-primary:hover{ background:var(--red-bright); transform:translateY(-2px); box-shadow:0 16px 28px -8px rgba(255,68,51,0.55);}
+  .btn-primary:hover{ background:var(--red-bright); transform:translateY(-2px); box-shadow:0 16px 28px -8px rgba(34,197,94,0.55);}
   .btn-ghost{
     background:transparent; color:var(--ink); border:1.5px solid var(--ink);
   }
@@ -190,7 +190,7 @@
   .bb-btn.alt{ background:var(--cream); border:1px solid var(--line); width:90px;}
   .bb-photo{
     margin-top:18px; height:110px; border-radius:10px;
-    background:linear-gradient(135deg, #F4CFC6, #C81E1E 60%, #7E1414);
+    background:linear-gradient(135deg, #CFEEDB, #1B8F5A 60%, #0B4F32);
     position:relative; overflow:hidden;
   }
   .bb-photo::after{
@@ -260,10 +260,10 @@
     position:relative; transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
   }
   .price-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); }
-  .price-card.featured{ border-color:var(--red); box-shadow:0 20px 44px -20px rgba(200,30,30,0.35); }
+  .price-card.featured{ border-color:var(--red); box-shadow:0 20px 44px -20px rgba(27,143,90,0.35); }
   .price-tag{
     display:inline-flex; font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:.06em; text-transform:uppercase;
-    color:var(--red); background:rgba(200,30,30,0.08); border-radius:100px; padding:5px 12px; margin-bottom:16px;
+    color:var(--red); background:rgba(27,143,90,0.08); border-radius:100px; padding:5px 12px; margin-bottom:16px;
   }
   .price-card.featured .price-tag{ background:var(--red); color:#fff; }
   .price-card h3{ font-size:1.4rem; margin-bottom:6px; }
@@ -288,13 +288,13 @@
   .menu-row{ display:grid; grid-template-columns:1.3fr 1fr 1fr; border-top:1px solid var(--line); }
   .menu-row div{ padding:20px 24px; font-size:0.95rem; }
   .menu-row .label{ color:var(--ink-soft); }
-  .menu-row .me{ font-weight:700; color:var(--red); background:rgba(200,30,30,0.045); }
+  .menu-row .me{ font-weight:700; color:var(--red); background:rgba(27,143,90,0.045); }
   .menu-row .them{ color:var(--rose); }
   @media (max-width:640px){
     .menu-head div, .menu-row div{ padding:14px 12px; font-size:0.82rem; }
   }
 
-  /* ---------- PROCESS (tasting menu) ---------- */
+  /* ---------- PROCESS (step by step) ---------- */
   .course-list{ display:flex; flex-direction:column; }
   .course{
     display:grid; grid-template-columns:110px 1fr; gap:28px;
@@ -338,7 +338,7 @@
   .contact{ background:var(--ink); color:#fff; position:relative; overflow:hidden; }
   .contact::before{
     content:''; position:absolute; top:-140px; right:-140px; width:420px; height:420px; border-radius:50%;
-    background:radial-gradient(circle, rgba(255,68,51,0.28), transparent 70%);
+    background:radial-gradient(circle, rgba(34,197,94,0.28), transparent 70%);
   }
   .contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; position:relative; z-index:1; }
   @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
@@ -369,7 +369,7 @@
     background:var(--cream);
   }
   .field input:focus, .field textarea:focus, .field select:focus{
-    outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,30,30,0.12); background:#fff;
+    outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(27,143,90,0.12); background:#fff;
   }
   .field textarea{ min-height:96px; resize:vertical; }
   .row2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -425,13 +425,13 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Premium websites for restaurants and small businesses</span>
+      <span class="eyebrow">Premium websites for small businesses</span>
       <h1>
         <span class="reveal"><span style="animation-delay:.05s">A website that makes</span></span>
-        <span class="reveal"><span style="animation-delay:.18s">people <em>hungry</em></span></span>
-        <span class="reveal"><span style="animation-delay:.30s">to visit you.</span></span>
+        <span class="reveal"><span style="animation-delay:.18s">people <em>excited</em></span></span>
+        <span class="reveal"><span style="animation-delay:.30s">to work with you.</span></span>
       </h1>
-      <p class="lede">I design and build stunning restaurant and small business websites that feel like they were crafted by a five star brand team, without the agency price tag. Your menu, reservations, story, and brand experience go live in as little as 48 hours.</p>
+      <p class="lede">I design and build stunning websites for small businesses, from restaurants and salons to real estate agents, that feel like they were crafted by a five star brand team, without the agency price tag. Your services, booking, story, and brand experience go live in as little as 48 hours.</p>
       <div class="hero-ctas">
         <a href="#contact" class="btn btn-primary">Build me a website →</a>
         <a href="#work" class="btn btn-ghost">See recent builds</a>
@@ -442,11 +442,11 @@
       <div class="browser">
         <div class="browser-bar">
           <i></i><i></i><i></i>
-          <div class="url">yourrestaurantname.com</div>
+          <div class="url">yourbusinessname.com</div>
         </div>
         <div class="browser-body">
-          <span class="bb-tag">Tonight's menu</span>
-          <div class="bb-title">Vietnamese &amp; Thai food</div>
+          <span class="bb-tag">Featured business</span>
+          <div class="bb-title">Your Business Name</div>
           <div class="bb-line"></div>
           <div class="bb-line short"></div>
           <div class="bb-photo"></div>
@@ -458,8 +458,8 @@
       </div>
       <div class="receipt">
         <h4>Order summary</h4>
-        <div class="rline"><span>Basic website</span><span>$385</span></div>
-        <div class="rline"><span>Premium website</span><span>$680</span></div>
+        <div class="rline"><span>Basic website</span><span>$299</span></div>
+        <div class="rline"><span>Premium website</span><span>$445</span></div>
         <div class="rline rtotal"><span>Hidden fees</span><span>$0</span></div>
         <div class="stamp">48 HR<br>DELIVERY</div>
       </div>
@@ -472,7 +472,7 @@
     <div class="stat-grid">
       <div class="stat-card reveal-up">
         <div class="stat-num" data-count="68">0%</div>
-        <div class="stat-label">more visits through online reservation</div>
+        <div class="stat-label">more visits through online booking</div>
       </div>
       <div class="stat-card reveal-up">
         <div class="stat-num" data-count="55">0%</div>
@@ -502,12 +502,12 @@
       <div class="why-card reveal-up">
         <span class="why-num">Pricing</span>
         <h3>Two flat rates, no surprises</h3>
-        <p>No tax, no monthly fee, no hidden add-ons. Pick $385 or $680, pay once, and the site is yours to keep, forever.</p>
+        <p>No tax, no monthly fee, no hidden add-ons. Pick $299 or $445, pay once, and the site is yours to keep, forever.</p>
       </div>
       <div class="why-card reveal-up">
         <span class="why-num">Value</span>
         <h3>A fraction of agency cost</h3>
-        <p>Agencies charge $3,000&ndash;$5,000 plus a monthly fee. I charge $385 to $680 once, and you still get the better site.</p>
+        <p>Agencies charge $3,000&ndash;$5,000 plus a monthly fee. I charge $299 to $445 once, and you still get the better site.</p>
       </div>
     </div>
   </div>
@@ -532,7 +532,7 @@
       </div>
       <div class="menu-row">
         <div class="label">Cost</div>
-        <div class="me">$385&ndash;$680, one time</div>
+        <div class="me">$299&ndash;$445, one time</div>
         <div class="them">$3,000&ndash;$5,000 + monthly</div>
       </div>
       <div class="menu-row">
@@ -552,17 +552,17 @@
 <section id="pricing" style="background:var(--cream); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="wrap">
     <div class="section-head reveal-up" style="margin-left:auto; margin-right:auto; text-align:center;">
-      <span class="kicker">Flat rate menu</span>
+      <span class="kicker">Flat rate pricing</span>
       <p style="margin-left:auto; margin-right:auto;">Pick what fits your business. Both come with the same 48 hour turnaround and zero hidden fees.</p>
     </div>
     <div class="pricing-grid">
       <div class="price-card reveal-up">
         <div class="price-tag">Basic</div>
         <h3>Basic Package</h3>
-        <div class="price-amount">$385 <span>flat rate</span></div>
+        <div class="price-amount">$299 <span>flat rate</span></div>
         <p class="price-sub">A clean, professional site that gets your business found and looking good online.</p>
         <ul class="price-list">
-          <li>1 landing page with menu, about, contact</li>
+          <li>1 landing page with services, about, contact</li>
           <li>Mobile friendly, fast loading design</li>
           <li>Online reservation</li>
           <li>SEO Optimized</li>
@@ -573,7 +573,7 @@
       <div class="price-card featured reveal-up">
         <div class="price-tag">Most popular</div>
         <h3>Premium Package</h3>
-        <div class="price-amount">$680 <span>flat rate</span></div>
+        <div class="price-amount">$445 <span>flat rate</span></div>
         <p class="price-sub">Everything in Basic, plus the extras that turn your website into a customer magnet.</p>
         <ul class="price-list">
           <li>Everything in Basic</li>
@@ -591,7 +591,7 @@
   <div class="wrap">
     <div class="section-head reveal-up">
       <span class="kicker">How it works</span>
-      <p>The whole process, start to finish, served in order.</p>
+      <p>The whole process, start to finish, in order.</p>
     </div>
     <div class="course-list">
       <div class="course reveal-up">
@@ -600,19 +600,19 @@
       </div>
       <div class="course reveal-up">
         <div class="course-tag">Step 02</div>
-        <div><h3>You send the ingredients</h3><p>Fill out the form and send back photos of your menu and dishes you'd like featured on the site.</p></div>
+        <div><h3>You send the details</h3><p>Fill out the form and send back photos and details about your business you'd like featured on the site.</p></div>
       </div>
       <div class="course reveal-up">
         <div class="course-tag">Step 03</div>
-        <div><h3>20% down, not 50%, and I start cooking</h3><p>Pay just 20% upfront ($77 for Basic, $136 for Premium) and I get to work building your site.</p></div>
+        <div><h3>50% down, and I get to work</h3><p>Pay 50% upfront ($150 for Basic, $223 for Premium) and I get to work building your site.</p></div>
       </div>
       <div class="course reveal-up">
         <div class="course-tag">Step 04</div>
-        <div><h3>Taste test</h3><p>I send your finished website for review. If you love it, you pay the remaining balance.</p></div>
+        <div><h3>First look</h3><p>I send your finished website for review. If you love it, you pay the remaining balance.</p></div>
       </div>
       <div class="course reveal-up">
         <div class="course-tag">Step 05</div>
-        <div><h3>Opening night</h3><p>I help connect your domain, so your site goes live at yourrestaurantname.com.</p></div>
+        <div><h3>Launch day</h3><p>I help connect your domain, so your site goes live at yourbusinessname.com.</p></div>
       </div>
     </div>
   </div>
@@ -622,11 +622,11 @@
   <div class="wrap">
     <div class="section-head reveal-up">
       <span class="kicker">Recent builds</span>
-      <h2>A few kitchens I've built websites for</h2>
+      <h2>A few businesses I've built websites for</h2>
     </div>
     <div class="work-grid">
-      <a class="work-chip reveal-up" href="https://taiyakinyc.com/" target="_blank" rel="noopener">
-        <div><div class="wc-name">Taiyaki NYC</div><div class="wc-url">taiyakinyc.com</div></div>
+      <a class="work-chip reveal-up" href="https://leowilkrealestate.com/" target="_blank" rel="noopener">
+        <div><div class="wc-name">Leo Real Estate</div><div class="wc-url">leowilkrealestate.com</div></div>
         <div class="arrow">↗</div>
       </a>
       <a class="work-chip reveal-up" href="https://dearsaigon.com/" target="_blank" rel="noopener">
@@ -653,8 +653,8 @@
     <div class="reveal-up">
       <span class="kicker">About me</span>
       <h2>Hi, I'm Vince.</h2>
-      <p>I'm a full-time Business Analyst and part-time Website Developer who enjoys creating practical digital solutions, from dashboards and analytics tools to websites that help businesses attract more customers.</p>
-      <p>I've built websites for over 100 restaurants and small businesses across the US and Canada. I care about the same thing you do, making your business feel just as impressive online as it does when customers walk through the door.</p>
+      <p>I'm a business analyst/ web developer who enjoys creating practical digital solutions, from dashboards and analytics tools to websites that help businesses attract more customers.</p>
+      <p>I've built websites for over 100 small businesses across the US and Canada, restaurants, salons, real estate agents, and more. I care about the same thing you do, making your business feel just as impressive online as it does when customers walk through the door.</p>
       <p>When I'm not building, you'll usually find me at the table playing ping pong. It's my other obsession and the inspiration behind my passion project, <a class="pinglink" href="http://ponghome.com" target="_blank" rel="noopener">Pong Home</a>, a community connecting table tennis players and coaches.</p>
     </div>
   </div>
@@ -664,8 +664,8 @@
   <div class="wrap contact-grid">
     <div class="reveal-up">
       <span class="kicker">Let's build</span>
-      <h2>Ready to open your kitchen online?</h2>
-      <p class="lede2">Tell me a bit about your restaurant or business. I'll reply within an hour with next steps, and your site can be live in 48 hours.</p>
+      <h2>Ready to grow your business online?</h2>
+      <p class="lede2">Tell me a bit about your business. I'll reply within an hour with next steps, and your site can be live in 48 hours.</p>
       <div class="contact-info">
         <a href="mailto:viet.adops@gmail.com">✉ viet.adops@gmail.com</a>
         <a href="tel:+14372441309">📞 +1 437 244 1309</a>
@@ -685,7 +685,7 @@
             </div>
             <div class="field">
               <label for="business">Business name</label>
-              <input id="business" name="business" type="text" required placeholder="Saigon Kitchen">
+              <input id="business" name="business" type="text" required placeholder="Bloom Hair Studio">
             </div>
           </div>
           <div class="row2">
@@ -702,12 +702,12 @@
             <label for="package">Which package?</label>
             <select id="package" name="package">
               <option value="Not sure yet">Not sure yet</option>
-              <option value="Basic - $385">Basic &mdash; $385</option>
-              <option value="Premium - $680">Premium &mdash; $680</option>
+              <option value="Basic - $299">Basic &mdash; $299</option>
+              <option value="Premium - $445">Premium &mdash; $445</option>
             </select>
           </div>
           <div class="field">
-            <label for="message">Tell me about your restaurant / business</label>
+            <label for="message">Tell me about your business</label>
             <textarea id="message" name="message" placeholder="A few sentences about your business and what you're picturing for the site..."></textarea>
           </div>
           <button type="submit" class="submit-btn">Send my request →</button>
@@ -726,7 +726,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-row">
-      <div class="foot-brand">Premium websites for restaurants and small businesses</div>
+      <div class="foot-brand">Premium websites for small businesses</div>
       <div class="foot-links">
         <a href="mailto:viet.adops@gmail.com">✉ Email</a>
         <a href="tel:+14372441309">📞 +1 437 244 1309</a>
@@ -738,7 +738,7 @@
 
 <script>
   // ticker content, duplicated for seamless loop
-  const tickerItems = ["48 hour turnaround","One time cost, no hidden fees","Flat rate","No monthly fee","200+ restaurants served"];
+  const tickerItems = ["48 hour turnaround","One time cost, no hidden fees","Flat rate","No monthly fee","200+ small businesses served"];
   const track = document.getElementById('tickerTrack');
   const full = [...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems];
   track.innerHTML = full.map(t => `<span>${t}</span>`).join('');
