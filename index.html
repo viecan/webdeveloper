@@ -6,19 +6,23 @@
 <title>Vince's Website Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#FFFFFF;
-    --cream:#F2FAF6;
-    --ink:#152420;
-    --ink-soft:#4C5E55;
-    --rose:#6E8A7C;
-    --red:#1B8F5A;
-    --red-bright:#22C55E;
-    --red-deep:#0B4F32;
-    --line:#DCEAE1;
-    --shadow: 0 20px 50px -20px rgba(36,21,18,0.25);
+    --cream:#F5F5F6;
+    --ink:#24262B;
+    --ink-soft:#6B6F76;
+    --rose:#9B9FA6;
+    --red:#C9A227;
+    --red-bright:#E8CB6B;
+    --red-deep:#17181B;
+    --line:#E3E3E5;
+    --yellow:#C9A227;
+    --gold-bright:#E8CB6B;
+    --gold-soft:#F6EFDA;
+    --shadow: 0 24px 60px -24px rgba(30,30,34,0.18);
+    --glow: 0 0 40px -12px rgba(201,162,39,0.35);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -29,9 +33,9 @@
     overflow-x:hidden;
   }
   h1,h2,h3, .display{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    letter-spacing:-0.01em;
+    font-family:'Inter', sans-serif;
+    font-weight:800;
+    letter-spacing:-0.03em;
     line-height:1.05;
   }
   .mono{
@@ -40,7 +44,7 @@
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
-  ::selection{background:var(--red); color:#fff;}
+  ::selection{background:var(--red); color:var(--ink);}
 
   /* reduced motion */
   @media (prefers-reduced-motion: reduce){
@@ -60,12 +64,14 @@
   }
   .brand{
     display:flex; align-items:center; gap:10px;
-    font-family:'Fraunces', serif; font-weight:700; font-size:1.25rem;
+    font-family:'Inter', sans-serif; letter-spacing:-0.02em; font-weight:700; font-size:1.25rem;
   }
   .brand .dot{
-    width:10px; height:10px; border-radius:50%; background:var(--red);
-    box-shadow:0 0 0 4px rgba(27,143,90,0.15);
+    width:10px; height:10px; border-radius:50%; background:var(--yellow);
+    box-shadow:0 0 0 4px rgba(201,162,39,0.14), 0 0 6px rgba(201,162,39,0.5);
+    animation:dotPulse 3.2s ease-in-out infinite;
   }
+  @keyframes dotPulse{ 0%,100%{ box-shadow:0 0 0 4px rgba(201,162,39,0.14), 0 0 6px rgba(201,162,39,0.5); } 50%{ box-shadow:0 0 0 5px rgba(201,162,39,0.08), 0 0 9px rgba(201,162,39,0.65); } }
   .navlinks{display:flex; gap:34px; align-items:center;}
   .navlinks a{
     font-size:0.92rem; font-weight:600; color:var(--ink-soft);
@@ -89,7 +95,7 @@
   }
   .ticker-track span{
     padding:9px 28px; font-family:'JetBrains Mono', monospace; font-size:0.76rem;
-    letter-spacing:0.06em; text-transform:uppercase; color:#EFDCD9;
+    letter-spacing:0.06em; text-transform:uppercase; color:#DCDEE3;
     border-right:1px solid rgba(255,255,255,0.15);
     display:inline-flex; align-items:center; gap:10px;
   }
@@ -101,12 +107,21 @@
     position:relative;
     padding:56px 0 90px;
     background:
-      radial-gradient(560px 320px at 88% -10%, rgba(27,143,90,0.10), transparent 70%),
-      var(--cream);
+      radial-gradient(1100px 560px at 50% -12%, rgba(201,162,39,0.10), transparent 60%),
+      radial-gradient(700px 420px at 92% 8%, rgba(232,203,107,0.08), transparent 65%),
+      var(--paper);
     border-bottom:1px solid var(--line);
     overflow:hidden;
   }
+  .glow-orb{
+    position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none; z-index:0;
+    animation:orbPulse 10s ease-in-out infinite;
+  }
+  .glow-orb.one{ width:340px; height:340px; background:rgba(232,203,107,0.20); top:-120px; left:-80px; }
+  .glow-orb.two{ width:260px; height:260px; background:rgba(201,162,39,0.16); bottom:-100px; right:6%; animation-delay:2.5s; }
+  @keyframes orbPulse{ 0%,100%{ transform:scale(1); opacity:0.7; } 50%{ transform:scale(1.1); opacity:0.9; } }
   .hero-grid{
+    position:relative; z-index:1;
     display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;
   }
   @media (max-width:940px){ .hero-grid{grid-template-columns:1fr;} }
@@ -114,8 +129,8 @@
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
     font-family:'JetBrains Mono', monospace; font-size:0.75rem; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--red);
-    background:#fff; border:1px solid var(--line); padding:7px 14px; border-radius:100px;
+    text-transform:uppercase; color:var(--yellow);
+    background:var(--gold-soft); border:1px solid rgba(201,162,39,0.35); padding:7px 14px; border-radius:100px;
     margin-bottom:26px; max-width:100%; text-align:center;
     opacity:0; animation:riseIn .7s ease forwards;
   }
@@ -126,8 +141,9 @@
     }
   }
   .hero h1{
-    font-size:clamp(2.5rem, 5vw, 3.9rem);
-    max-width:12ch;
+    font-size:clamp(2.1rem, 4vw, 3.1rem);
+    font-weight:900;
+    max-width:14ch;
     line-height:1.22;
   }
   .hero h1 .reveal{ display:block; overflow:hidden; padding-bottom:0.14em; margin-bottom:-0.14em; }
@@ -136,7 +152,9 @@
     animation:riseIn .8s cubic-bezier(.22,1,.36,1) forwards;
   }
   .hero h1 em{
-    font-style:italic; color:var(--red); font-weight:500;
+    font-style:normal; font-weight:800;
+    background:linear-gradient(90deg, var(--gold-bright), var(--yellow));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
   }
   .hero p.lede{
     margin-top:26px; font-size:1.12rem; color:var(--ink-soft); max-width:46ch; line-height:1.6;
@@ -154,10 +172,11 @@
     cursor:pointer; border:none; transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
   }
   .btn-primary{
-    background:var(--red); color:#fff;
-    box-shadow:0 12px 24px -8px rgba(27,143,90,0.55);
+    background:var(--ink); color:#fff;
+    border:1px solid rgba(201,162,39,0.5);
+    box-shadow:0 12px 24px -8px rgba(36,38,43,0.35);
   }
-  .btn-primary:hover{ background:var(--red-bright); transform:translateY(-2px); box-shadow:0 16px 28px -8px rgba(34,197,94,0.55);}
+  .btn-primary:hover{ background:var(--yellow); color:#fff; border-color:var(--yellow); transform:translateY(-2px); box-shadow:0 0 26px rgba(201,162,39,0.5), 0 16px 28px -8px rgba(201,162,39,0.35);}
   .btn-ghost{
     background:transparent; color:var(--ink); border:1.5px solid var(--ink);
   }
@@ -165,8 +184,13 @@
 
   /* browser mock + receipt */
   .hero-visual{ position:relative; }
+  .hero-visual::before{
+    content:''; position:absolute; inset:-30px; z-index:-1;
+    background:radial-gradient(circle at 50% 45%, rgba(232,203,107,0.20), transparent 65%);
+    filter:blur(30px);
+  }
   .browser{
-    background:#fff; border-radius:16px; box-shadow:var(--shadow);
+    background:#fff; border-radius:16px; box-shadow:var(--shadow), 0 0 36px -14px rgba(201,162,39,0.25);
     border:1px solid var(--line); overflow:hidden;
     transform:rotate(1.4deg);
     animation:floaty 6s ease-in-out infinite;
@@ -182,20 +206,32 @@
   }
   .browser-body{ padding:26px 26px 30px; }
   .bb-tag{ font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--red);}
-  .bb-title{ font-family:'Fraunces', serif; font-weight:700; font-size:1.4rem; margin:8px 0 10px;}
+  .bb-title{ font-family:'Inter', sans-serif; letter-spacing:-0.02em; font-weight:700; font-size:1.4rem; margin:8px 0 10px;}
   .bb-line{ height:9px; background:var(--line); border-radius:4px; margin-bottom:8px;}
   .bb-line.short{ width:60%; }
   .bb-btns{ display:flex; gap:10px; margin-top:18px;}
   .bb-btn{ height:30px; border-radius:8px; background:var(--red); width:110px; }
   .bb-btn.alt{ background:var(--cream); border:1px solid var(--line); width:90px;}
   .bb-photo{
-    margin-top:18px; height:110px; border-radius:10px;
-    background:linear-gradient(135deg, #CFEEDB, #1B8F5A 60%, #0B4F32);
+    margin-top:18px; height:130px; border-radius:10px;
+    background:linear-gradient(135deg, #E9EAEC, #8A8E96 60%, #24262B);
     position:relative; overflow:hidden;
   }
   .bb-photo::after{
     content:''; position:absolute; inset:0;
     background:repeating-linear-gradient(120deg, rgba(255,255,255,0.08) 0 2px, transparent 2px 14px);
+  }
+  .bb-photo svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .bb-photo .bb-badge{
+    position:absolute; left:12px; bottom:12px; display:flex; align-items:center; gap:6px;
+    background:#fff; border-radius:100px; padding:6px 12px 6px 8px; box-shadow:0 8px 18px -8px rgba(36,38,43,0.35);
+  }
+  .bb-photo .bb-badge .dot{
+    width:20px; height:20px; border-radius:50%; background:var(--yellow);
+    display:flex; align-items:center; justify-content:center; font-size:0.7rem;
+  }
+  .bb-photo .bb-badge span{
+    font-family:'Inter', sans-serif; font-weight:700; font-size:0.72rem; color:var(--ink);
   }
 
   .receipt{
@@ -213,9 +249,10 @@
   .receipt .rtotal{ border-top:1px dashed var(--rose); margin-top:10px; padding-top:8px; font-weight:700; color:var(--ink);}
   .receipt .stamp{
     margin:12px auto 0; width:74px; height:74px; border-radius:50%;
-    border:2.5px solid var(--red); color:var(--red); display:flex; align-items:center; justify-content:center;
+    border:2.5px solid var(--yellow); color:var(--yellow); display:flex; align-items:center; justify-content:center;
     font-family:'JetBrains Mono', monospace; font-weight:700; font-size:0.62rem; text-align:center; text-transform:uppercase;
     transform:rotate(-14deg); line-height:1.15;
+    box-shadow:0 0 14px rgba(201,162,39,0.4);
   }
   @media (max-width:940px){ .receipt{ position:static; margin:26px auto 0; transform:rotate(-3deg); } }
 
@@ -224,7 +261,7 @@
   .section-head{ max-width:640px; margin-bottom:56px; }
   .kicker{
     font-family:'JetBrains Mono', monospace; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase;
-    color:var(--red); display:block; margin-bottom:14px;
+    color:var(--yellow); display:block; margin-bottom:14px;
   }
   .section-head h2{ font-size:clamp(1.8rem, 3.4vw, 2.6rem); }
   .section-head p{ margin-top:16px; color:var(--ink-soft); font-size:1.05rem; line-height:1.65; }
@@ -236,8 +273,8 @@
   .stats{ background:var(--ink); color:#fff; }
   .stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.12); border-radius:18px; overflow:hidden; }
   .stat-card{ background:var(--ink); padding:40px 30px; text-align:center; }
-  .stat-num{ font-family:'Fraunces', serif; font-size:3rem; font-weight:700; color:var(--red-bright); }
-  .stat-label{ margin-top:10px; color:#D9C7C3; font-size:0.92rem; line-height:1.5; }
+  .stat-num{ font-family:'Inter', sans-serif; letter-spacing:-0.02em; font-size:3rem; font-weight:700; color:var(--gold-bright); text-shadow:0 0 24px rgba(201,162,39,0.4); }
+  .stat-label{ margin-top:10px; color:#B6BAC2; font-size:0.92rem; line-height:1.5; }
   @media (max-width:760px){ .stat-grid{ grid-template-columns:1fr; } }
 
   /* ---------- WHY / CARDS ---------- */
@@ -247,27 +284,32 @@
     background:var(--cream); border:1px solid var(--line); border-radius:18px; padding:32px 28px;
     transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
   }
-  .why-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); border-color:var(--red); }
+  .why-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow), 0 0 24px -10px rgba(232,203,107,0.35); border-color:var(--red); }
   .why-num{ font-family:'JetBrains Mono', monospace; color:var(--red); font-size:0.85rem; font-weight:700; }
   .why-card h3{ font-size:1.3rem; margin:14px 0 10px; }
   .why-card p{ color:var(--ink-soft); font-size:0.96rem; line-height:1.6; }
 
   /* ---------- PRICING ---------- */
-  .pricing-grid{ display:grid; grid-template-columns:1fr 1fr; gap:26px; max-width:900px; margin:0 auto; }
-  @media (max-width:760px){ .pricing-grid{ grid-template-columns:1fr; } }
+  .pricing-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; max-width:1080px; margin:0 auto; }
+  @media (max-width:940px){ .pricing-grid{ grid-template-columns:1fr; max-width:460px; } }
   .price-card{
     background:#fff; border:1.5px solid var(--line); border-radius:22px; padding:36px 32px;
     position:relative; transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
   }
   .price-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); }
-  .price-card.featured{ border-color:var(--red); box-shadow:0 20px 44px -20px rgba(27,143,90,0.35); }
+  .price-card.featured{
+    border-color:var(--yellow); border-width:2px; box-shadow:0 20px 44px -20px rgba(36,38,43,0.25), 0 0 30px -8px rgba(201,162,39,0.35);
+    transform:translateY(-10px);
+  }
+  .price-card.featured:hover{ transform:translateY(-14px); }
+  @media (max-width:940px){ .price-card.featured{ transform:none; } .price-card.featured:hover{ transform:translateY(-6px); } }
   .price-tag{
     display:inline-flex; font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:.06em; text-transform:uppercase;
-    color:var(--red); background:rgba(27,143,90,0.08); border-radius:100px; padding:5px 12px; margin-bottom:16px;
+    color:var(--red); background:rgba(201,162,39,0.08); border-radius:100px; padding:5px 12px; margin-bottom:16px;
   }
-  .price-card.featured .price-tag{ background:var(--red); color:#fff; }
+  .price-card.featured .price-tag{ background:var(--yellow); color:#fff; }
   .price-card h3{ font-size:1.4rem; margin-bottom:6px; }
-  .price-amount{ font-family:'Fraunces', serif; font-weight:700; font-size:2.6rem; color:var(--ink); margin-bottom:4px; }
+  .price-amount{ font-family:'Inter', sans-serif; letter-spacing:-0.02em; font-weight:700; font-size:2.6rem; color:var(--ink); margin-bottom:4px; }
   .price-amount span{ font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:var(--rose); font-weight:400; }
   .price-sub{ color:var(--ink-soft); font-size:0.94rem; line-height:1.55; margin-bottom:20px; }
   .price-list{ list-style:none; display:flex; flex-direction:column; gap:11px; }
@@ -275,6 +317,7 @@
     font-size:0.92rem; color:var(--ink-soft); padding-left:22px; position:relative; line-height:1.4;
   }
   .price-list li::before{ content:'✓'; position:absolute; left:0; color:var(--red); font-weight:700; }
+  .price-card.featured .price-list li::before{ color:var(--yellow); }
 
   /* ---------- COMPARISON MENU ---------- */
   .compare{ background:var(--cream); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
@@ -284,11 +327,11 @@
   }
   .menu-head{ display:grid; grid-template-columns:1.3fr 1fr 1fr; }
   .menu-head div{ padding:22px 24px; font-family:'JetBrains Mono', monospace; font-size:0.78rem; text-transform:uppercase; letter-spacing:.06em; }
-  .menu-head .h-me{ background:var(--red); color:#fff; }
+  .menu-head .h-me{ background:var(--red); color:var(--ink); }
   .menu-row{ display:grid; grid-template-columns:1.3fr 1fr 1fr; border-top:1px solid var(--line); }
   .menu-row div{ padding:20px 24px; font-size:0.95rem; }
   .menu-row .label{ color:var(--ink-soft); }
-  .menu-row .me{ font-weight:700; color:var(--red); background:rgba(27,143,90,0.045); }
+  .menu-row .me{ font-weight:700; color:var(--red); background:rgba(201,162,39,0.045); }
   .menu-row .them{ color:var(--rose); }
   @media (max-width:640px){
     .menu-head div, .menu-row div{ padding:14px 12px; font-size:0.82rem; }
@@ -318,9 +361,9 @@
     transition:border-color .25s ease, transform .25s ease, background .25s ease;
   }
   .work-chip:hover{ border-color:var(--red); transform:translateX(4px); background:var(--cream); }
-  .work-chip .wc-name{ font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem; }
+  .work-chip .wc-name{ font-family:'Inter', sans-serif; letter-spacing:-0.02em; font-weight:600; font-size:1.1rem; }
   .work-chip .wc-url{ font-family:'JetBrains Mono', monospace; font-size:0.76rem; color:var(--rose); margin-top:4px; }
-  .work-chip .arrow{ font-size:1.3rem; color:var(--red); transition:transform .25s ease; }
+  .work-chip .arrow{ font-size:1.3rem; color:var(--yellow); transition:transform .25s ease; }
   .work-chip:hover .arrow{ transform:translate(4px,-4px); }
 
   /* ---------- ABOUT ---------- */
@@ -332,33 +375,39 @@
   .about-photo img{ width:100%; height:100%; object-fit:cover; }
   .about h2{ font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:18px; }
   .about p{ color:var(--ink-soft); font-size:1.03rem; line-height:1.7; margin-bottom:14px; }
-  .about a.pinglink{ color:var(--red); font-weight:700; border-bottom:1.5px solid var(--red); }
+  .about a.pinglink{ color:var(--yellow); font-weight:700; border-bottom:1.5px solid var(--yellow); }
 
   /* ---------- LEAD FORM ---------- */
   .contact{ background:var(--ink); color:#fff; position:relative; overflow:hidden; }
   .contact::before{
     content:''; position:absolute; top:-140px; right:-140px; width:420px; height:420px; border-radius:50%;
-    background:radial-gradient(circle, rgba(34,197,94,0.28), transparent 70%);
+    background:radial-gradient(circle, rgba(232,203,107,0.18), transparent 70%);
+    filter:blur(10px); animation:orbPulse 11s ease-in-out infinite;
+  }
+  .contact::after{
+    content:''; position:absolute; bottom:-160px; left:-120px; width:360px; height:360px; border-radius:50%;
+    background:radial-gradient(circle, rgba(201,162,39,0.14), transparent 70%);
+    filter:blur(10px); animation:orbPulse 11s ease-in-out infinite; animation-delay:3s;
   }
   .contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; position:relative; z-index:1; }
   @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
   .contact h2{ color:#fff; font-size:clamp(2rem,3.6vw,2.8rem); }
-  .contact .kicker{ color:var(--red-bright); }
-  .contact p.lede2{ color:#D9C7C3; margin-top:18px; font-size:1.05rem; line-height:1.7; max-width:44ch; }
+  .contact .kicker{ color:var(--gold-bright); }
+  .contact p.lede2{ color:#B6BAC2; margin-top:18px; font-size:1.05rem; line-height:1.7; max-width:44ch; }
   .contact-info{ margin-top:34px; display:flex; flex-direction:column; gap:14px; }
   .contact-info a{ display:flex; align-items:center; gap:10px; font-weight:600; color:#fff; }
   .contact-info a:hover{ color:var(--red-bright); }
   .badge48{
     margin-top:34px; display:inline-flex; align-items:center; gap:10px;
-    border:1px solid rgba(255,255,255,0.25); border-radius:100px; padding:10px 18px;
-    font-family:'JetBrains Mono', monospace; font-size:0.78rem; color:#EFDCD9;
+    background:var(--yellow); border-radius:100px; padding:11px 20px;
+    font-family:'Inter', sans-serif; font-size:0.85rem; font-weight:600; color:#3A2E00;
   }
-  .badge48 b{ color:var(--red-bright); }
+  .badge48 b{ color:#1A1400; }
 
   form.leadform{
     background:#fff; color:var(--ink); border-radius:20px; padding:34px; box-shadow:var(--shadow);
   }
-  .leadform h3{ font-family:'Fraunces', serif; font-size:1.4rem; margin-bottom:6px; }
+  .leadform h3{ font-family:'Inter', sans-serif; letter-spacing:-0.02em; font-size:1.4rem; margin-bottom:6px; }
   .leadform .sub{ color:var(--ink-soft); font-size:0.92rem; margin-bottom:22px; }
   .field{ margin-bottom:18px; }
   .field label{ display:block; font-size:0.82rem; font-weight:700; margin-bottom:7px; color:var(--ink-soft); }
@@ -369,17 +418,17 @@
     background:var(--cream);
   }
   .field input:focus, .field textarea:focus, .field select:focus{
-    outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(27,143,90,0.12); background:#fff;
+    outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(201,162,39,0.12); background:#fff;
   }
   .field textarea{ min-height:96px; resize:vertical; }
   .row2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
   @media (max-width:480px){ .row2{ grid-template-columns:1fr; } }
   .submit-btn{
-    width:100%; background:var(--red); color:#fff; border:none; border-radius:10px;
+    width:100%; background:var(--red); color:var(--ink); border:none; border-radius:10px;
     padding:15px; font-weight:700; font-size:1rem; cursor:pointer;
-    transition:background .25s ease, transform .1s ease;
+    transition:background .25s ease, transform .1s ease, box-shadow .25s ease;
   }
-  .submit-btn:hover{ background:var(--red-bright); }
+  .submit-btn:hover{ background:var(--red-bright); box-shadow:0 0 20px rgba(232,203,107,0.4); }
   .submit-btn:active{ transform:scale(0.98); }
   .form-note{ font-size:0.76rem; color:var(--rose); margin-top:12px; text-align:center; }
   .thanks{
@@ -392,16 +441,16 @@
     animation:pop .4s cubic-bezier(.34,1.56,.64,1);
   }
   @keyframes pop{ from{ transform:scale(0); } to{ transform:scale(1); } }
-  .thanks h3{ font-family:'Fraunces', serif; font-size:1.3rem; margin-bottom:8px; }
+  .thanks h3{ font-family:'Inter', sans-serif; letter-spacing:-0.02em; font-size:1.3rem; margin-bottom:8px; }
   .thanks p{ color:var(--ink-soft); font-size:0.92rem; }
 
   /* ---------- FOOTER ---------- */
-  footer{ background:var(--red-deep); color:#F6DEDA; padding:44px 0; }
+  footer{ background:var(--red-deep); color:#E4E5E9; padding:44px 0; }
   .foot-row{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
-  .foot-brand{ font-family:'Fraunces', serif; font-weight:700; color:#fff; font-size:1.05rem; }
+  .foot-brand{ font-family:'Inter', sans-serif; letter-spacing:-0.02em; font-weight:700; color:#fff; font-size:1.05rem; }
   .foot-links{ display:flex; gap:22px; font-size:0.88rem; }
   .foot-links a:hover{ color:#fff; }
-  .foot-fine{ font-size:0.78rem; color:#E3B9B3; margin-top:18px; }
+  .foot-fine{ font-size:0.78rem; color:#A6AAB3; margin-top:18px; }
 </style>
 </head>
 <body>
@@ -423,13 +472,14 @@
 </div>
 
 <section class="hero">
+  <div class="glow-orb one"></div>
+  <div class="glow-orb two"></div>
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Premium websites for small businesses</span>
       <h1>
-        <span class="reveal"><span style="animation-delay:.05s">A website that makes</span></span>
-        <span class="reveal"><span style="animation-delay:.18s">people <em>excited</em></span></span>
-        <span class="reveal"><span style="animation-delay:.30s">to work with you.</span></span>
+        <span class="reveal"><span style="animation-delay:.05s">Websites that help</span></span>
+        <span class="reveal"><span style="animation-delay:.18s">your business <em>grow</em>.</span></span>
       </h1>
       <p class="lede">I design and build stunning websites for small businesses, from restaurants and salons to real estate agents, that feel like they were crafted by a five star brand team, without the agency price tag. Your services, booking, story, and brand experience go live in as little as 48 hours.</p>
       <div class="hero-ctas">
@@ -449,7 +499,17 @@
           <div class="bb-title">Your Business Name</div>
           <div class="bb-line"></div>
           <div class="bb-line short"></div>
-          <div class="bb-photo"></div>
+          <div class="bb-photo">
+            <svg viewBox="0 0 400 130" preserveAspectRatio="none">
+              <rect x="40" y="82" width="30" height="34" rx="4" fill="rgba(255,255,255,0.35)"/>
+              <rect x="90" y="64" width="30" height="52" rx="4" fill="rgba(255,255,255,0.45)"/>
+              <rect x="140" y="46" width="30" height="70" rx="4" fill="rgba(255,255,255,0.6)"/>
+              <rect x="190" y="28" width="30" height="88" rx="4" fill="rgba(255,255,255,0.85)"/>
+              <polyline points="55,80 105,62 155,44 205,26" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="205" cy="26" r="6" fill="#fff"/>
+            </svg>
+            <div class="bb-badge"><span class="dot">⭐</span><span>4.9 &middot; 200+ businesses</span></div>
+          </div>
           <div class="bb-btns">
             <div class="bb-btn"></div>
             <div class="bb-btn alt"></div>
@@ -458,8 +518,9 @@
       </div>
       <div class="receipt">
         <h4>Order summary</h4>
-        <div class="rline"><span>Basic website</span><span>$299</span></div>
-        <div class="rline"><span>Premium website</span><span>$445</span></div>
+        <div class="rline"><span>Basic website</span><span>$245</span></div>
+        <div class="rline"><span>Standard website</span><span>$399</span></div>
+        <div class="rline"><span>Premium website</span><span>$868</span></div>
         <div class="rline rtotal"><span>Hidden fees</span><span>$0</span></div>
         <div class="stamp">48 HR<br>DELIVERY</div>
       </div>
@@ -502,12 +563,12 @@
       <div class="why-card reveal-up">
         <span class="why-num">Pricing</span>
         <h3>Two flat rates, no surprises</h3>
-        <p>No tax, no monthly fee, no hidden add-ons. Pick $299 or $445, pay once, and the site is yours to keep, forever.</p>
+        <p>No tax, no monthly fee, no hidden add-ons. Pick $245, $399, or $868, pay once, and the site is yours to keep, forever.</p>
       </div>
       <div class="why-card reveal-up">
         <span class="why-num">Value</span>
         <h3>A fraction of agency cost</h3>
-        <p>Agencies charge $3,000&ndash;$5,000 plus a monthly fee. I charge $299 to $445 once, and you still get the better site.</p>
+        <p>Agencies charge $3,000&ndash;$5,000 plus a monthly fee. I charge $245 to $868 once, and you still get the better site.</p>
       </div>
     </div>
   </div>
@@ -517,7 +578,7 @@
   <div class="wrap">
     <div class="section-head reveal-up" style="margin-left:auto; margin-right:auto; text-align:center;">
       <span class="kicker">The comparison</span>
-      <h2>Same result, very different bill</h2>
+      <h2>Get the same outcome for a fraction of the cost.</h2>
     </div>
     <div class="menu-card reveal-up">
       <div class="menu-head">
@@ -532,7 +593,7 @@
       </div>
       <div class="menu-row">
         <div class="label">Cost</div>
-        <div class="me">$299&ndash;$445, one time</div>
+        <div class="me">From $245, one-time</div>
         <div class="them">$3,000&ndash;$5,000 + monthly</div>
       </div>
       <div class="menu-row">
@@ -553,18 +614,18 @@
   <div class="wrap">
     <div class="section-head reveal-up" style="margin-left:auto; margin-right:auto; text-align:center;">
       <span class="kicker">Flat rate pricing</span>
-      <p style="margin-left:auto; margin-right:auto;">Pick what fits your business. Both come with the same 48 hour turnaround and zero hidden fees.</p>
+      <p style="margin-left:auto; margin-right:auto;">Pick what fits your business. Every tier comes with the same 48 hour turnaround and zero hidden fees.</p>
     </div>
     <div class="pricing-grid">
       <div class="price-card reveal-up">
         <div class="price-tag">Basic</div>
         <h3>Basic Package</h3>
-        <div class="price-amount">$299 <span>flat rate</span></div>
+        <div class="price-amount">$245 <span>flat rate</span></div>
         <p class="price-sub">A clean, professional site that gets your business found and looking good online.</p>
         <ul class="price-list">
           <li>1 landing page with services, about, contact</li>
           <li>Mobile friendly, fast loading design</li>
-          <li>Online reservation</li>
+          <li>Contact / Lead form</li>
           <li>SEO Optimized</li>
           <li>Delivered in 48 hours</li>
         </ul>
@@ -572,16 +633,30 @@
       </div>
       <div class="price-card featured reveal-up">
         <div class="price-tag">Most popular</div>
-        <h3>Premium Package</h3>
-        <div class="price-amount">$445 <span>flat rate</span></div>
-        <p class="price-sub">Everything in Basic, plus the extras that turn your website into a customer magnet.</p>
+        <h3>Standard Package</h3>
+        <div class="price-amount">$399 <span>flat rate</span></div>
+        <p class="price-sub">Our most recommended option, everything you need to look established and win more customers.</p>
         <ul class="price-list">
           <li>Everything in Basic</li>
+          <li>Up to 3 pages</li>
+          <li>Custom photo gallery</li>
+          <li>Online Reservation</li>
           <li>Branded domain name (included)</li>
-          <li>Custom photo galleries &amp; animations</li>
-          <li>Additional pages &amp; custom features</li>
         </ul>
-        <a href="#contact" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:24px;">Start with Premium</a>
+        <a href="#contact" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:24px;">Start with Standard</a>
+      </div>
+      <div class="price-card reveal-up">
+        <div class="price-tag">Premium</div>
+        <h3>Premium Package</h3>
+        <div class="price-amount">$868 <span>flat rate</span></div>
+        <p class="price-sub">Everything in Standard, plus the extras that turn your website into a customer magnet.</p>
+        <ul class="price-list">
+          <li>Everything in Standard</li>
+          <li>Up to 5 additional pages</li>
+          <li>Advanced animations &amp; interactions</li>
+          <li>Priority support &amp; revisions</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" style="width:100%; justify-content:center; margin-top:24px;">Start with Premium</a>
       </div>
     </div>
   </div>
@@ -604,7 +679,7 @@
       </div>
       <div class="course reveal-up">
         <div class="course-tag">Step 03</div>
-        <div><h3>50% down, and I get to work</h3><p>Pay 50% upfront ($150 for Basic, $223 for Premium) and I get to work building your site.</p></div>
+        <div><h3>50% down, and I get to work</h3><p>Pay 50% upfront and I get to work building your site.</p></div>
       </div>
       <div class="course reveal-up">
         <div class="course-tag">Step 04</div>
@@ -702,8 +777,9 @@
             <label for="package">Which package?</label>
             <select id="package" name="package">
               <option value="Not sure yet">Not sure yet</option>
-              <option value="Basic - $299">Basic &mdash; $299</option>
-              <option value="Premium - $445">Premium &mdash; $445</option>
+              <option value="Basic - $245">Basic &mdash; $245</option>
+              <option value="Standard - $399">Standard &mdash; $399</option>
+              <option value="Premium - $868">Premium &mdash; $868</option>
             </select>
           </div>
           <div class="field">
@@ -726,7 +802,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-row">
-      <div class="foot-brand">Premium websites for small businesses</div>
+      <div class="foot-brand">Websites that help your business grow.</div>
       <div class="foot-links">
         <a href="mailto:viet.adops@gmail.com">✉ Email</a>
         <a href="tel:+14372441309">📞 +1 437 244 1309</a>
