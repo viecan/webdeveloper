@@ -212,13 +212,6 @@
     .browser-stack .bb-btns{ margin-top:12px; }
     .browser-stack .bb-btn{ height:26px; font-size:0.72rem; padding:0 12px; }
     .browser{ position:relative; z-index:1; }
-    .testimonial-card{
-      position:absolute; z-index:5; left:50%; bottom:0; right:auto;
-      width:88%; max-width:300px;
-      transform:translateX(-50%) rotate(-2deg);
-    }
-    @keyframes floaty2Mobile{ 0%,100%{transform:translateX(-50%) rotate(-2deg) translateY(0);} 50%{transform:translateX(-50%) rotate(-2deg) translateY(-8px);} }
-    .testimonial-card{ animation:floaty2Mobile 7s ease-in-out infinite; }
   }
   .browser{
     background:#fff; border-radius:16px; box-shadow:var(--shadow), 0 0 36px -14px rgba(201,162,39,0.2);
@@ -271,6 +264,15 @@
   }
   .testimonial-card .author-name{ font-size:0.78rem; font-weight:700; color:var(--ink); }
   .testimonial-card .author-role{ font-size:0.72rem; color:var(--ink-soft); }
+  @media (max-width:940px){
+    .testimonial-card{
+      position:absolute; z-index:5; left:50%; right:auto; bottom:0;
+      width:88%; max-width:300px;
+      transform:translateX(-50%) rotate(-2deg);
+      animation:floaty2Mobile 7s ease-in-out infinite;
+    }
+    @keyframes floaty2Mobile{ 0%,100%{transform:translateX(-50%) rotate(-2deg) translateY(0);} 50%{transform:translateX(-50%) rotate(-2deg) translateY(-8px);} }
+  }
 
   /* ---------- SECTION SHELL ---------- */
   section{ padding:104px 0; }
@@ -281,8 +283,11 @@
   #process .section-head{ margin-bottom:36px; }
   #work .section-head{ margin-bottom:32px; }
   .kicker{
-    font-family:'JetBrains Mono', monospace; font-size:1.5rem; letter-spacing:0.04em; text-transform:uppercase;
+    font-family:'JetBrains Mono', monospace; font-size:1.2rem; letter-spacing:0.04em; text-transform:uppercase;
     color:var(--ink-soft); display:block; margin-bottom:16px; font-weight:700;
+  }
+  @media (max-width:940px){
+    .kicker{ font-size:1.05rem; }
   }
   .section-head h2{ font-size:clamp(1.26rem, 2.38vw, 1.82rem); }
   @media (min-width:941px){
@@ -410,6 +415,7 @@
   }
   @media (max-width:760px){
     .about-card{ grid-template-columns:1fr; text-align:left; padding:32px 26px; }
+    .about-card p{ text-align:justify; }
   }
   .about-photo{
     width:180px; height:180px; border-radius:50%; overflow:hidden;
@@ -838,9 +844,9 @@
     <div>
       <span class="kicker">About me</span>
       <h2>Hi, I'm Vince.</h2>
-      <p>I'm a business analyst/ web developer who enjoys creating practical digital solutions, from dashboards and analytics tools to websites that help businesses attract more customers.</p>
-      <p>I've built websites for over 100 small businesses across the US and Canada, restaurants, salons, real estate agents, and more. I care about the same thing you do, making your business feel just as impressive online as it does when customers walk through the door.</p>
-      <p>When I'm not building, you'll usually find me at the table playing ping pong. It's my other obsession and the inspiration behind my passion project, <a class="pinglink" href="http://ponghome.com" target="_blank" rel="noopener">Pong Home</a>, a community connecting table tennis players and coaches.</p>
+      <p>I'm someone who enjoys creating things that people can actually use. Whether it's an analytics dashboard that helps teams make smarter decisions or a website that helps a small business attract more customers, I love turning ideas and challenges into simple digital solutions.</p>
+      <p>I've built 100+ websites for businesses across North America and Europe, but the part I enjoy most is seeing an idea come to life and knowing it helps someone grow their business.</p>
+      <p>When I'm not building websites, you'll usually find me at a ping pong table. What started as a hobby became <a class="pinglink" href="http://ponghome.com" target="_blank" rel="noopener">Pong Home</a>, a passion project that connects players and coaches through the sport I love.</p>
     </div>
     </div>
   </div>
@@ -867,7 +873,7 @@
             </div>
             <div class="field">
               <label for="business">Business name</label>
-              <input id="business" name="business" type="text" required placeholder="Japanese Pearl Spa">
+              <input id="business" name="business" type="text" required placeholder="Healthy Restaurant">
             </div>
           </div>
           <div class="row2">
