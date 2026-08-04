@@ -189,6 +189,26 @@
     background:radial-gradient(circle at 50% 45%, rgba(232,203,107,0.20), transparent 65%);
     filter:blur(30px);
   }
+  .browser-stack{
+    display:none;
+  }
+  @media (max-width:940px){
+    .hero-visual{ padding-top:14px; padding-right:14px; }
+    .browser-stack{
+      display:block; position:absolute; top:-8px; right:-8px; left:22px;
+      background:#fff; border-radius:16px; border:1px solid var(--line);
+      box-shadow:var(--shadow); overflow:hidden;
+      transform:rotate(4deg); z-index:0; opacity:0.9;
+    }
+    .browser-stack .browser-bar{ padding:10px 12px; }
+    .browser-stack .browser-bar i{ width:8px; height:8px; }
+    .browser-stack .browser-body{ padding:18px 20px 22px; }
+    .browser-stack .bb-line{ height:8px; }
+    .browser-stack .bb-photo{ height:60px; margin-top:12px; }
+    .browser-stack .bb-btns{ margin-top:12px; }
+    .browser-stack .bb-btn{ height:22px; }
+    .browser{ position:relative; z-index:1; }
+  }
   .browser{
     background:#fff; border-radius:16px; box-shadow:var(--shadow), 0 0 36px -14px rgba(201,162,39,0.25);
     border:1px solid var(--line); overflow:hidden;
@@ -222,39 +242,26 @@
     background:repeating-linear-gradient(120deg, rgba(255,255,255,0.08) 0 2px, transparent 2px 14px);
   }
   .bb-photo svg{ position:absolute; inset:0; width:100%; height:100%; }
-  .bb-photo .bb-badge{
-    position:absolute; left:12px; bottom:12px; display:flex; align-items:center; gap:6px;
-    background:#fff; border-radius:100px; padding:6px 12px 6px 8px; box-shadow:0 8px 18px -8px rgba(36,38,43,0.35);
-  }
-  .bb-photo .bb-badge .dot{
-    width:20px; height:20px; border-radius:50%; background:var(--yellow);
-    display:flex; align-items:center; justify-content:center; font-size:0.7rem;
-  }
-  .bb-photo .bb-badge span{
-    font-family:'Inter', sans-serif; font-weight:700; font-size:0.72rem; color:var(--ink);
-  }
 
-  .receipt{
-    position:absolute; right:-34px; bottom:-46px; width:190px;
-    background:#fffefb; border:1px solid var(--line);
+  .testimonial-card{
+    position:absolute; right:-24px; bottom:-30px; width:210px;
+    background:#fff; border:1px solid var(--line); border-radius:16px;
     box-shadow:var(--shadow);
-    padding:18px 16px 22px;
-    transform:rotate(-6deg);
-    clip-path: polygon(0% 0%,100% 0%,100% 96%,92% 100%,84% 96%,76% 100%,68% 96%,60% 100%,52% 96%,44% 100%,36% 96%,28% 100%,20% 96%,12% 100%,4% 96%,0% 100%);
+    padding:20px 20px 18px;
+    transform:rotate(-4deg);
     animation:floaty2 7s ease-in-out infinite;
   }
-  @keyframes floaty2{ 0%,100%{transform:rotate(-6deg) translateY(0);} 50%{transform:rotate(-6deg) translateY(-8px);} }
-  .receipt h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; text-align:center; letter-spacing:.08em; text-transform:uppercase;}
-  .receipt .rline{ display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:0.68rem; margin-top:10px; color:var(--ink-soft);}
-  .receipt .rtotal{ border-top:1px dashed var(--rose); margin-top:10px; padding-top:8px; font-weight:700; color:var(--ink);}
-  .receipt .stamp{
-    margin:12px auto 0; width:74px; height:74px; border-radius:50%;
-    border:2.5px solid var(--yellow); color:var(--yellow); display:flex; align-items:center; justify-content:center;
-    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:0.62rem; text-align:center; text-transform:uppercase;
-    transform:rotate(-14deg); line-height:1.15;
-    box-shadow:0 0 14px rgba(201,162,39,0.4);
+  @keyframes floaty2{ 0%,100%{transform:rotate(-4deg) translateY(0);} 50%{transform:rotate(-4deg) translateY(-8px);} }
+  .testimonial-card .stars{ color:var(--yellow); font-size:0.95rem; letter-spacing:2px; }
+  .testimonial-card .quote{ font-family:'Inter', sans-serif; font-size:0.82rem; color:var(--ink); line-height:1.45; margin-top:8px; font-weight:500; }
+  .testimonial-card .t-author{ display:flex; align-items:center; gap:10px; margin-top:14px; }
+  .testimonial-card .avatar{
+    width:32px; height:32px; border-radius:50%; background:var(--gold-soft); color:var(--yellow);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0;
   }
-  @media (max-width:940px){ .receipt{ position:static; margin:26px auto 0; transform:rotate(-3deg); } }
+  .testimonial-card .author-name{ font-size:0.78rem; font-weight:700; color:var(--ink); }
+  .testimonial-card .author-role{ font-size:0.72rem; color:var(--ink-soft); }
+  @media (max-width:940px){ .testimonial-card{ display:none; } }
 
   /* ---------- SECTION SHELL ---------- */
   section{ padding:104px 0; }
@@ -394,9 +401,6 @@
   .contact h2{ color:#fff; font-size:clamp(2rem,3.6vw,2.8rem); }
   .contact .kicker{ color:var(--gold-bright); }
   .contact p.lede2{ color:#B6BAC2; margin-top:18px; font-size:1.05rem; line-height:1.7; max-width:44ch; }
-  .contact-info{ margin-top:34px; display:flex; flex-direction:column; gap:14px; }
-  .contact-info a{ display:flex; align-items:center; gap:10px; font-weight:600; color:#fff; }
-  .contact-info a:hover{ color:var(--red-bright); }
   .badge48{
     margin-top:34px; display:inline-flex; align-items:center; gap:10px;
     background:var(--yellow); border-radius:100px; padding:11px 20px;
@@ -448,8 +452,6 @@
   footer{ background:var(--red-deep); color:#E4E5E9; padding:44px 0; }
   .foot-row{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
   .foot-brand{ font-family:'Inter', sans-serif; letter-spacing:-0.02em; font-weight:700; color:#fff; font-size:1.05rem; }
-  .foot-links{ display:flex; gap:22px; font-size:0.88rem; }
-  .foot-links a:hover{ color:#fff; }
   .foot-fine{ font-size:0.78rem; color:#A6AAB3; margin-top:18px; }
 </style>
 </head>
@@ -489,6 +491,23 @@
     </div>
 
     <div class="hero-visual">
+      <div class="browser-stack" aria-hidden="true">
+        <div class="browser-bar">
+          <i></i><i></i><i></i>
+          <div class="url">yourbusinessname.com</div>
+        </div>
+        <div class="browser-body">
+          <span class="bb-tag">Featured business</span>
+          <div class="bb-title">Your Business Name</div>
+          <div class="bb-line"></div>
+          <div class="bb-line short"></div>
+          <div class="bb-photo"></div>
+          <div class="bb-btns">
+            <div class="bb-btn"></div>
+            <div class="bb-btn alt"></div>
+          </div>
+        </div>
+      </div>
       <div class="browser">
         <div class="browser-bar">
           <i></i><i></i><i></i>
@@ -508,7 +527,6 @@
               <polyline points="55,80 105,62 155,44 205,26" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
               <circle cx="205" cy="26" r="6" fill="#fff"/>
             </svg>
-            <div class="bb-badge"><span class="dot">⭐</span><span>4.9 &middot; 200+ businesses</span></div>
           </div>
           <div class="bb-btns">
             <div class="bb-btn"></div>
@@ -516,13 +534,16 @@
           </div>
         </div>
       </div>
-      <div class="receipt">
-        <h4>Order summary</h4>
-        <div class="rline"><span>Basic website</span><span>$245</span></div>
-        <div class="rline"><span>Standard website</span><span>$399</span></div>
-        <div class="rline"><span>Premium website</span><span>$868</span></div>
-        <div class="rline rtotal"><span>Hidden fees</span><span>$0</span></div>
-        <div class="stamp">48 HR<br>DELIVERY</div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Vince delivered exactly what we needed, and fast."</p>
+        <div class="t-author">
+          <div class="avatar">J</div>
+          <div>
+            <div class="author-name">Jamie R.</div>
+            <div class="author-role">Bloom Hair Studio</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -562,13 +583,13 @@
       </div>
       <div class="why-card reveal-up">
         <span class="why-num">Pricing</span>
-        <h3>Two flat rates, no surprises</h3>
-        <p>No tax, no monthly fee, no hidden add-ons. Pick $245, $399, or $868, pay once, and the site is yours to keep, forever.</p>
+        <h3>Flat rates, no surprises</h3>
+        <p>No monthly fee, no hidden add-ons. Pay once and the site is yours to keep, forever.</p>
       </div>
       <div class="why-card reveal-up">
         <span class="why-num">Value</span>
         <h3>A fraction of agency cost</h3>
-        <p>Agencies charge $3,000&ndash;$5,000 plus a monthly fee. I charge $245 to $868 once, and you still get the better site.</p>
+        <p>Agencies charge around $5,000 plus a additional charges and fees. I charge as little as $245, and you still get a better site.</p>
       </div>
     </div>
   </div>
@@ -697,7 +718,7 @@
   <div class="wrap">
     <div class="section-head reveal-up">
       <span class="kicker">Recent builds</span>
-      <h2>A few businesses I've built websites for</h2>
+      <h2>A few websites I've built</h2>
     </div>
     <div class="work-grid">
       <a class="work-chip reveal-up" href="https://leowilkrealestate.com/" target="_blank" rel="noopener">
@@ -741,10 +762,6 @@
       <span class="kicker">Let's build</span>
       <h2>Ready to grow your business online?</h2>
       <p class="lede2">Tell me a bit about your business. I'll reply within an hour with next steps, and your site can be live in 48 hours.</p>
-      <div class="contact-info">
-        <a href="mailto:viet.adops@gmail.com">✉ viet.adops@gmail.com</a>
-        <a href="tel:+14372441309">📞 +1 437 244 1309</a>
-      </div>
       <div class="badge48">⏱ Average reply time: <b>under 1 hour</b></div>
     </div>
 
@@ -787,7 +804,6 @@
             <textarea id="message" name="message" placeholder="A few sentences about your business and what you're picturing for the site..."></textarea>
           </div>
           <button type="submit" class="submit-btn">Send my request →</button>
-          <div class="form-note">Submissions are sent straight to viet.adops@gmail.com</div>
         </div>
         <div class="thanks" id="thanksBlock">
           <div class="stampcheck">✓</div>
@@ -803,10 +819,6 @@
   <div class="wrap">
     <div class="foot-row">
       <div class="foot-brand">Websites that help your business grow.</div>
-      <div class="foot-links">
-        <a href="mailto:viet.adops@gmail.com">✉ Email</a>
-        <a href="tel:+14372441309">📞 +1 437 244 1309</a>
-      </div>
     </div>
     <div class="foot-fine">© 2026 All rights reserved.</div>
   </div>
