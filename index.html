@@ -37,6 +37,10 @@
     font-weight:800;
     letter-spacing:-0.03em;
     line-height:1.05;
+    text-wrap:balance;
+  }
+  p{
+    text-wrap:pretty;
   }
   .mono{
     font-family:'JetBrains Mono', monospace;
@@ -280,7 +284,13 @@
     font-family:'JetBrains Mono', monospace; font-size:1.5rem; letter-spacing:0.04em; text-transform:uppercase;
     color:var(--ink-soft); display:block; margin-bottom:16px; font-weight:700;
   }
-  .section-head h2{ font-size:clamp(1.8rem, 3.4vw, 2.6rem); }
+  .section-head h2{ font-size:clamp(1.26rem, 2.38vw, 1.82rem); }
+  @media (min-width:941px){
+    #why h2, .compare h2, #work h2{ white-space:nowrap; }
+  }
+  @media (max-width:940px){
+    #why h2, .compare h2, #work h2{ line-height:1.35; }
+  }
   .section-head p{ margin-top:16px; color:var(--ink-soft); font-size:1.05rem; line-height:1.65; }
 
   .reveal-up{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1); }
@@ -427,7 +437,7 @@
   }
   .contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; position:relative; z-index:1; }
   @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
-  .contact h2{ color:#fff; font-size:clamp(2rem,3.6vw,2.8rem); }
+  .contact h2{ color:#fff; font-size:clamp(1.4rem,2.52vw,1.96rem); }
   .contact .kicker{ color:#C7C9CE; }
   .contact p.lede2{ color:#B6BAC2; margin-top:18px; font-size:1.05rem; line-height:1.7; max-width:44ch; }
   .badge48{
@@ -799,7 +809,7 @@
   <div class="wrap">
     <div class="section-head reveal-up">
       <span class="kicker">Recent builds</span>
-      <h2>A few websites I've built</h2>
+      <h2>From 100+ websites I've built, here are a few standout ones.</h2>
     </div>
     <div class="work-grid">
       <a class="work-chip reveal-up" href="https://leowilkrealestate.com/" target="_blank" rel="noopener">
