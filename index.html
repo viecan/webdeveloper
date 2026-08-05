@@ -161,9 +161,10 @@
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
   .hero p.lede{
-    margin-top:26px; font-size:1.12rem; color:var(--ink-soft); max-width:46ch; line-height:1.6;
+    margin-top:26px; font-size:1.05rem; color:var(--ink-soft); max-width:50ch; line-height:1.6;
     opacity:0; animation:riseIn .8s ease forwards; animation-delay:.55s;
   }
+  .hero p.lede + p.lede{ margin-top:14px; }
   .hero-ctas{
     margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;
     opacity:0; animation:riseIn .8s ease forwards; animation-delay:.7s;
@@ -314,8 +315,8 @@
   @media (max-width:760px){ .stat-grid{ grid-template-columns:1fr; } }
 
   /* ---------- WHY / CARDS ---------- */
-  .card-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  @media (max-width:860px){ .card-grid{ grid-template-columns:1fr; } }
+  .card-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+  @media (max-width:700px){ .card-grid{ grid-template-columns:1fr; } }
   .why-card{
     background:var(--cream); border:1px solid var(--line); border-radius:18px; padding:32px 28px;
     transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
@@ -533,7 +534,9 @@
         <span class="reveal"><span style="animation-delay:.05s">Websites that help</span></span>
         <span class="reveal"><span style="animation-delay:.18s">your business <em>grow</em>.</span></span>
       </h1>
-      <p class="lede">I design and build stunning websites for small businesses, from restaurants and salons to real estate agents, that feel like they were crafted by a five star brand team, without the agency price tag. Your services, booking, story, and brand experience go live in as little as 48 hours.</p>
+      <p class="lede">I design and build stunning websites for local service businesses, creating online experiences that look like they were crafted by a five-star brand team.</p>
+      <p class="lede">From design and content creation to your custom domain and hosting, I handle everything from start to finish. No technical setup, no confusing decisions, no hassle. You simply relax while I transform your vision into a professional website that helps your business stand out and attract more customers.</p>
+      <p class="lede">Your complete website can be built and launched within 48 hours.</p>
       <div class="hero-ctas">
         <a href="#contact" class="btn btn-primary">Help me build a website →</a>
       </div>
@@ -686,6 +689,11 @@
         <span class="why-num">Value</span>
         <h3>A fraction of agency cost</h3>
         <p>Agencies charge around $5,000 plus a additional charges and fees. I charge as little as $245, and you still get a better site.</p>
+      </div>
+      <div class="why-card reveal-up">
+        <span class="why-num">Hassle-Free</span>
+        <h3>Everything included</h3>
+        <p>Design, content, domain, and hosting, all included. No technical setup, no stress, just a website ready to go live.</p>
       </div>
     </div>
   </div>
