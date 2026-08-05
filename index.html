@@ -165,6 +165,9 @@
     opacity:0; animation:riseIn .8s ease forwards; animation-delay:.55s;
   }
   .hero p.lede + p.lede{ margin-top:14px; }
+  @media (max-width:760px){
+    .hero p.lede{ text-align:justify; max-width:none; }
+  }
   .hero-ctas{
     margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;
     opacity:0; animation:riseIn .8s ease forwards; animation-delay:.7s;
@@ -393,9 +396,17 @@
   @media (max-width:900px){
     .steps-grid{ grid-template-columns:1fr; gap:0; margin-top:0; }
     .steps-grid::before{ display:none; }
-    .step{ display:flex; align-items:flex-start; gap:16px; text-align:left; padding:16px 0; border-top:1px solid var(--line); }
+    .step{
+      display:grid; grid-template-columns:36px 108px 1fr; column-gap:14px; align-items:center;
+      text-align:left; padding:16px 0; border-top:1px solid var(--line);
+    }
     .step:first-child{ border-top:none; padding-top:8px; }
     .step-circle{ margin:0; flex-shrink:0; width:36px; height:36px; font-size:0.9rem; }
+    .step h3{ margin-bottom:0; }
+    .step p{ margin:0; }
+  }
+  @media (max-width:420px){
+    .step{ grid-template-columns:32px 92px 1fr; column-gap:10px; }
   }
 
   /* ---------- WORK / LINKS ---------- */
@@ -857,8 +868,7 @@
     </div>
     <div>
       <span class="kicker">About me</span>
-      <h2>Hi there, I'm Vince, a digital developer from Canada 🇨🇦</h2>
-      <p>I enjoy creating digital solutions that help businesses grow. I've built 100+ websites for local service businesses across North America and Europe, turning ideas into online experiences that help people succeed.</p>
+      <p>Hi there, I'm Vince, a digital developer from Canada 🇨🇦 I enjoy creating digital solutions that help businesses grow. I've built 100+ websites for local service businesses across North America and Europe, turning ideas into online experiences that help people succeed.</p>
       <p>Outside of web development, you'll find me at a ping pong table. My passion for the sport inspired me to create <a class="pinglink" href="http://ponghome.com" target="_blank" rel="noopener">Pong Home</a>, a community connecting players and coaches through the game I love.</p>
     </div>
     </div>
