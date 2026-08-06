@@ -1031,5 +1031,19 @@
   });
 </script>
 
+<!-- Vince Web Studio chat widget (MyChatBot) -->
+<link rel="stylesheet" href="https://storage.googleapis.com/mychatbot-widget-assets/v1/style.css" />
+<script src="https://storage.googleapis.com/mychatbot-widget-assets/v1/widget.js"></script>
+<div id="my-chat-widget-container"></div>
+<script>
+  MyChatBot.mount('#my-chat-widget-container', {
+    account_id: "81b88828-29f7-4617-a30a-dd6c04e13420",
+    widget_id: "webstudio-main",
+    api_url: 'https://api.mychatbot.app',
+    assistant_name: "Vince's Assistant",
+    color: "#20B2AA",
+    lang: 'en'
+  });
+</script>
 </body>
 </html>
